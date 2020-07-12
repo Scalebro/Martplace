@@ -38,7 +38,9 @@ gulp.task('html', function() {
 });
 gulp.task('js', function() {
     return gulp.src([
-            'node_modules/slick-carousel/slick/slick.js'
+            'node_modules/slick-carousel/slick/slick.js',
+            'node_modules/mixitup/dist/mixitup.js'
+
         ])
         .pipe(concat('libs.min.js'))
         .pipe(uglify())
@@ -79,7 +81,7 @@ gulp.task('export', function() {
 gulp.task('watch', function() {
     gulp.watch('src/scss/**/*.scss', gulp.parallel('scss'))
     gulp.watch('src/*.html', gulp.parallel('html'))
-    gulp.watch('src/js/*.js', gulp.parallel('js'))
+    gulp.watch('src/js/main.js', gulp.parallel('js'))
 });
 gulp.task('build', gulp.series('clean', 'export'));
 gulp.task('default', gulp.parallel('css', 'scss', 'js', 'script', 'browser-sync', 'watch'));
